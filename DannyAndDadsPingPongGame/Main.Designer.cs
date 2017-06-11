@@ -1,6 +1,6 @@
 ﻿namespace DannyAndDadsPingPongGame
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -97,8 +97,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.TopMost = true;
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Main_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.racket)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

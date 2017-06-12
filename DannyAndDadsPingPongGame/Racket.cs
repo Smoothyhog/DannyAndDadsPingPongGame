@@ -20,12 +20,22 @@ namespace DannyAndDadsPingPongGame
             _control.Left = Cursor.Position.X - _control.Width / 2;
         }
 
-        public bool Hits(Ball ball)
+        public int CalculateDeflection(Ball ball)
         {
-            return ball.Area.Bottom >= _control.Top
-                   && ball.Area.Bottom <= _control.Bottom
-                   && ball.Area.Left >= _control.Left
-                   && ball.Area.Right <= _control.Right;
+            var x = _control.Width / 3;
+            var a = _control.Left + x;
+            var b = _control.Left + (2 * x);
+
+            if (ball.Area.Left >= _control.Left
+                && ball.Area.Right <= a)
+                return 2;
+            if (ball.Area.Left >= a
+                && ball.Area.Right <= b)
+                return 4;
+            if (ball.Area.Left >= b)
+                return 1;
+
+            return 0;
         }
     }
 }

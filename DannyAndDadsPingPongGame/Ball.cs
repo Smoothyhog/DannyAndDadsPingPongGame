@@ -40,7 +40,7 @@ namespace DannyAndDadsPingPongGame
             X += amount;
         }
 
-        public void BounceVerticallly()
+        public void BounceVertically()
         {
             _audio.Plop();
             Y = -Y;
@@ -55,6 +55,7 @@ namespace DannyAndDadsPingPongGame
         public void Hit()
         {
             _audio.Beeep();
+            Y = -Y;
         }
 
         public void Miss()
@@ -76,6 +77,15 @@ namespace DannyAndDadsPingPongGame
         public bool MissesRacket(Racket racket)
         {
             return _bounds.Bottom >= racket.Area.Bottom;
+        }
+
+        public bool HitsRacket(Racket racket)
+        {
+            return _bounds.Bottom >= racket.Area.Top
+                   && _bounds.Bottom <= racket.Area.Bottom
+                   && _bounds.Left >= racket.Area.Left
+                   && _bounds.Right <= racket.Area.Right;
+
         }
     }
 }

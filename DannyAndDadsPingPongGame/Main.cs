@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing.Drawing2D;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace DannyAndDadsPingPongGame
@@ -25,10 +26,10 @@ namespace DannyAndDadsPingPongGame
             _racket.CaptureMouse();
             _ball.Move();
 
-            if (_racket.Hits(_ball))
+            if (_ball.HitsRacket(_racket))
             {
-                _ball.IncreaseSpeedBy(1);
-                _ball.BounceVerticallly();
+                var speed = _racket.CalculateDeflection(_ball);
+                _ball.IncreaseSpeedBy(speed);
                 _score.Increment();
                 _playground.ChangeColor(_random);
                 _ball.Hit();
@@ -38,7 +39,7 @@ namespace DannyAndDadsPingPongGame
                 _ball.BounceHorizontal();
 
             if (_ball.HitsCeilingOf(_playground))
-                _ball.BounceVerticallly();
+                _ball.BounceVertically();
 
             if (_ball.MissesRacket(_racket))
             {
